@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HerbaPedia Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1b5e20, #33691e);
+      margin: 0;
+      padding: 0;
+      color: #e8f5e9;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .dashboard-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .dashboard-header h2 {
+      color: #c8e6c9;
+      margin-bottom: 10px;
+    }
+
+    .dashboard-header p {
+      color: #a5d6a7;
+      font-size: 15px;
+    }
+
+    .profile-btn, .logout-btn {
+      display: inline-block;
+      margin: 10px 10px 30px;
+      padding: 10px 25px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .profile-btn:hover, .logout-btn:hover {
+      background-color: #2e7d32;
+    }
+
+    .profile-section {
+      background-color: #2e7d32;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-section h3 {
+      margin-top: 0;
+      color: #ffffff;
+    }
+
+    .profile-section p {
+      margin: 5px 0;
+      color: #dcedc8;
+    }
+
+    .herb-card {
+      background: #33691e;
+      border: 1px solid #81c784;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .herb-card h3 {
+      margin: 0 0 8px;
+      color: #a5d6a7;
+    }
+
+    .herb-card p {
+      margin: 0;
+      color: #dcedc8;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="dashboard-header">
+      <h2>Welcome to HerbaPedia</h2>
+      <p id="greeting"></p>
+      <button class="profile-btn" onclick="toggleProfile()">Profile</button>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="profile-section" id="profileSection">
+      <h3>User Profile</h3>
+      <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+      <p><strong>Member Since:</strong> April 2025</p>
+      <p><strong>Role:</strong> HerbaPedia Enthusiast</p>
+    </div>
+
+    <!-- Herbal Plant Cards -->
+    <div class="herb-card">
+      <h3>🌿 Tulsi (Holy Basil)</h3>
+      <p>Boosts immunity, reduces stress, and supports respiratory health.</p>
+    </div>
+    <div class="herb-card">
+      <h3>🌼 Chamomile</h3>
+      <p>Promotes sleep and relaxation, with mild anti-inflammatory effects.</p>
+    </div>
+    <div class="herb-card">
+      <h3>🧄 Garlic</h3>
+      <p>Lowers blood pressure, improves cholesterol levels, and supports immunity.</p>
+    </div>
+    <div class="herb-card">
+      <h3>🌱 Ginger</h3>
+      <p>Relieves nausea, improves digestion, and reduces inflammation.</p>
+    </div>
+    <div class="herb-card">
+      <h3>🍃 Peppermint</h3>
+      <p>Aids in digestion, soothes headaches, and freshens breath.</p>
+    </div>
+    <div class="herb-card">
+      <h3>✨ Turmeric</h3>
+      <p>Rich in antioxidants; known for powerful anti-inflammatory effects.</p>
+    </div>
+    <div class="herb-card">
+      <h3>🌾 Ashwagandha</h3>
+      <p>Reduces stress and anxiety, supports cognitive function.</p>
+    </div>
+    <div class="herb-card">
+      <h3>🌸 Lavender</h3>
+      <p>Calms the nervous system, aids sleep, and relieves skin irritation.</p>
+    </div>
+  </div>
+
+  <script>
+    const user = localStorage.getItem('loggedInUser');
+    const greeting = document.getElementById('greeting');
+    const profileUsername = document.getElementById('profileUsername');
+  
+    if (!user) {
+      window.location.href = "index.html";
+    } else {
+      greeting.innerText = `Welcome, ${user}! Here's your personalized dashboard of herbal knowledge.`;
+      profileUsername.innerText = user;
+    }
+  
+    function logout() {
+      localStorage.removeItem('loggedInUser');
+      window.location.href = "index.html";
+    }
+  
+    function toggleProfile() {
+      const profile = document.getElementById('profileSection');
+      profile.style.display = profile.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+  

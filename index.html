@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HerbaPedia - Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h1>🌿 HerbaPedia</h1>
+    <div class="form-box">
+      <input type="text" id="username" placeholder="Enter username" />
+      <input type="password" id="password" placeholder="Enter password" />
+      <button onclick="login()">Login</button>
+      <p>Don't have an account? <a href="#" onclick="toggleRegister()">Register</a></p>
+    </div>
+
+    <div class="form-box hidden" id="registerBox">
+      <input type="text" id="regUsername" placeholder="Create username" />
+      <input type="password" id="regPassword" placeholder="Create password" />
+      <button onclick="register()">Register</button>
+      <p>Already have an account? <a href="#" onclick="toggleRegister()">Login</a></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
